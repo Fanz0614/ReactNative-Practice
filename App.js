@@ -12,9 +12,9 @@ export default function App() {
     setEnteredGoal('')
   }
 
-  const ListGoals = () => {
+  const listGoals = () => {
     return courseGoals.map((items, index) => {
-      return <Text key={`${items}${index}`}>
+      return <Text style={courseGoals.length > 0 ? styles.listItems : ''} key={`${items}${index}`}>
         {items}
       </Text>
     })
@@ -25,7 +25,7 @@ export default function App() {
         <TextInput placeholder="Course Goal" style={styles.input} onChangeText={enteredGoalHandler} value={enteredGoal} />
         <Button title="ADD" onPress={addGoalHandler} />
       </View>
-      <View>{ListGoals()}</View>
+      <View>{listGoals()}</View>
       <View />
     </View>
   );
@@ -45,5 +45,13 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 10
+  },
+  listItems: {
+    width: '80%',
+    padding: 10,
+    marginVertical: 10,
+    backgroundColor: '#ccc',
+    borderColor: 'black',
+    borderWidth: 1
   }
 });
