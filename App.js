@@ -14,10 +14,16 @@ export default function App() {
     setCourseGoals([...courseGoals, enteredGoal])
     setEnteredGoal('')
   }
+  const onDelete = (value) => {
+    const new_courseGoals = [...courseGoals]
+    const index = new_courseGoals.findIndex((item)=> item === value)
+    new_courseGoals.splice(index, 1)
+    setCourseGoals(new_courseGoals)
+  }
   return (
     <View style={styles.screen}>
       <GoalInput enteredGoalHandler={enteredGoalHandler} addGoalHandler={addGoalHandler} enteredGoal={enteredGoal} />
-      <GoalItem props={courseGoals} />
+      <GoalItem courseGoals={courseGoals} onDelete={onDelete} setCourseGoals={setCourseGoals} />
     </View>
   );
 }

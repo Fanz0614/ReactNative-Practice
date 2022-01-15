@@ -1,16 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
+import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 
-export const GoalItem =({props})=>{
+export const GoalItem = ({ courseGoals, onDelete }) => {
     const listGoals = () => {
-        return props.map((items, index) => {
-          return <Text style={props.length > 0 ? styles.listItems : ''} key={`${items}${index}`}>
-            {items}
-          </Text>
+        return courseGoals.map((items, index) => {
+            return <Text onPress={()=>onDelete(items)} style={courseGoals.length > 0 ? styles.listItems : ''} key={`${items}${index}`}>
+                {items}
+            </Text>
         })
-      }
-    return(
-        <ScrollView>{listGoals()}</ScrollView>
+    }
+
+    return (
+        <TouchableOpacity >
+            <ScrollView>{listGoals()}</ScrollView>
+        </TouchableOpacity>
+
     )
 }
 const styles = StyleSheet.create({
@@ -21,5 +25,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#ccc',
         borderColor: 'black',
         borderWidth: 1
-      }
+    }
 })
