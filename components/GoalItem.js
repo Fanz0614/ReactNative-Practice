@@ -19,7 +19,7 @@ export const GoalItem = ({ courseGoals, onDelete }) => {
 }
 const styles = StyleSheet.create({
     listItems: {
-        width: '80%',
+        width: '100%',
         padding: 10,
         marginVertical: 10,
         backgroundColor: '#ccc',
